@@ -20,7 +20,7 @@ func readInput() string {
     return string(str)
 }
 
-func indexLookup(position int, line string, strlen int) int {
+func indexLookup(position int, line string) int {
     lookup := [9] string {
         "one",
         "two",
@@ -54,10 +54,10 @@ func main() {
             var num, decimal int
 
             i := 0
-            lookup := indexLookup(i, line, lineLen)
+            lookup := indexLookup(i, line)
             for (line[i] <= '0' || line[i] > '9') && (lookup == -1) {
                 i++
-                lookup = indexLookup(i, line, lineLen)
+                lookup = indexLookup(i, line)
             }
             if lookup != -1 {
                 decimal = lookup
@@ -66,10 +66,10 @@ func main() {
             }
 
             i = lineLen - 1
-            lookup = indexLookup(i, line, lineLen)
+            lookup = indexLookup(i, line)
             for (line[i] <= '0' || line[i] > '9') && (lookup == -1) {
                 i--
-                lookup = indexLookup(i, line, lineLen)
+                lookup = indexLookup(i, line)
             }
             if lookup != -1 {
                 num = lookup
